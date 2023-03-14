@@ -1,0 +1,63 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mi Página de Inicio</title>
+    <style>
+       a {
+            color: rgb(255, 255, 255);
+        }
+        .links {
+        background-color: #78a0ec;
+        color: white;
+        text-align: center;
+        list-style: none;
+        margin: 10px;
+        padding: 10px;
+        }
+
+          li {
+        display: inline-block;
+        margin-right: 200px;
+        font-size: 30px
+          }
+
+       li:last-child {
+        margin-right: 0;
+          }
+
+      h1 {
+        background-color: #033d52;
+        color: rgb(245, 197, 197);
+        text-align: center;
+        padding: 10px;
+        font-size: 50px;
+         }
+
+      h1, .links {
+          margin: 0;
+         }
+    </style>
+
+</head>
+<body>
+  <div class="links">
+    <ul>
+      <li><a href="{% url 'search' %}">Buscador</a></li>
+      <li><a href="{% url 'add_author' %}">Autores</a></li>
+      <li><a href="{% url 'add_publisher' %}">Editoriales</a></li>
+      <li><a href="">Libros</a></li>
+    </ul>
+  </div>
+  <h1>Tercera Entrega CoderHouse</h1>
+</body>
+
+    <h2>Agregar Libro</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agregar</button>
+    </form>
+{% endblock %}
